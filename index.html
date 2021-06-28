@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Lesson 4. HTML/CSS Course</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./lesson4.css">
+    <style>
+        .shower {
+            --slide-ratio: calc(16 / 9);
+            --color-key: #b20600;
+        }
+    </style>
+</head>
+<body class="shower list grid">
+    <header class="caption">
+        <h1>Лекция 4</h1>
+        <p>Адаптивная верстка</p>
+    </header>
+
+    <section class="slide">
+        <h2>Потребители контента</h2>
+        <li class="next">
+            <mark class="item important">Десктопы</mark> - самый полный вид сайта
+        </li>
+        <li class="next">
+            <mark class="item important">Мобильные телефоны</mark>
+        </li>
+        <li class="next">
+            <mark class="item secondary">Планшеты</mark> - между ними
+        </li>
+        <li class="next">
+            <mark class="item secondary">Принтеры</mark> - возможность напечатать страницу
+        </li>
+        <li class="next">
+            <mark class="item secondary">Скринридеры</mark>
+        </li>
+    </section>
+    <!-- как упростить себе жизнь - есть подход -->
+    <section class="slide">
+        <h2>Mobile first</h2>
+        <img class="image_centered" src="./pictures/mobailfirst.png">
+        <div><a href="https://www.mvideo.ru/" target="_blank">Mvideo</a> - пример mobile first</div>
+    </section>
+
+    <!-- про методологию дизайна и верстки рассказать что дизайн - это рисуем -->
+    <section class="slide">
+        <h2>Mobile first</h2>
+        <ul>
+            <li>Методология дизайна</li>
+            <li>Методология верстки</li>
+            <br>
+            <li>Один сайт для всех устройств</li>
+            <li>Люди <a target="_blank" href="https://conversion.im/otchet-similarweb-digital-trendy-2020">чаще</a> используют в интернете смартфон, чем десктоп</li>
+            <li><a href="https://developers.google.com/search/blog/2020/03/announcing-mobile-first-indexing-for" target="_blank">Mobile-first indexing</a> от Google</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Медиа-запросы</h2>
+        <div class="content">
+            <p>Условное применение стилей. Один html - разные стили.</p>
+            <div class="media">
+                <pre style="margin: 0; white-space: pre; font-size: 18px">            [media type]           [media features]</pre>
+                <mark class="item important">@media</mark> <mark class="item important">not screen</mark> <mark class="item secondary">and</mark> <mark class="item important">(max-width: 400px)</mark> <mark class="item secondary">{</mark> <br>
+                <mark class="item secondary" style="margin-left: 50px;">css-rules ...</mark><br>
+                <mark class="item secondary">}</mark>
+
+                <pre class="media__description">[media query]</pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Медиа-запросы</h2>
+        <div class="content">
+            <p><mark class="item important">Media type</mark> - тип устройства</p>
+            <ul class="next">
+                <li><mark class="item secondary">all</mark> - все устройства (по умолчанию)</li>
+                <li><mark class="item secondary">speech</mark> - скринридеры</li>
+                <li><mark class="item secondary">print</mark> - принтеры и предпросмотр</li>
+                <li><mark class="item secondary">screen</mark> - устройства с экраном</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Медиа-запросы</h2>
+        <div class="content">
+            <p><mark class="item important">Media features</mark> - технические характеристики устройства (<a target="_blank" href='https://developer.mozilla.org/en-US/docs/Web/CSS/@media#Media_features'>mdn</a>)</p>
+            <ul>
+                <li><mark class="item secondary">width, max-width</mark> - ширина вьюпорта</li>
+                <li><mark class="item secondary">height, max-height</mark> - высота вьюпорта</li>
+                <li><mark class="item secondary">orientation</mark> - ориентация (portrait | landscape)</li>
+                <li><mark class="item secondary">resolution</mark> - разрешение</li>
+                <li><mark class="item secondary">prefers-color-scheme</mark> - тема (темная или светлая)</li>
+                <li>...</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Медиа-запросы</h2>
+        <div class="content">
+            <p><mark class="item important">Логический оператор</mark></p>
+            <ul>
+                <li><mark class="item secondary">not</mark> - логическое <mark class="item secondary">«НЕ»</mark></li>
+                <li><mark class="item secondary">and</mark> - логическое <mark class="item secondary">«И»</mark></li>
+                <li><mark class="item secondary">,</mark> - логическое <mark class="item secondary">«ИЛИ»</mark></li>
+                <li class="next"><mark class="item secondary">only</mark> - сейчас можно не использовать</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Медиа-запросы</h2>
+        <div class="content">
+            <mark class="item secondary">@media screen and (min-width: 768px)</mark> -> <mark class="item secondary">@media screen</mark><br>
+            <mark class="item secondary">@media only screen and (min-width: 768px)</mark> -> <mark class="item secondary">@media only</mark>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Mobile first</h2>
+        <div class="columns two">
+            <pre class="small">
+                <code><span class="rule">.media-block </span><span class="punctuation">{</span></code>
+                <code><span class="property">  background</span><span class="punctuation">:</span> yellow<span class="punctuation">; // Стили для тачей</span></code>
+                <code><span class="punctuation">}</span></code>
+                <code><span class="property">@media </span>screen and (min-width: 768px) <span class="punctuation">{</span></code>
+                <code><span class="rule">  .media-block </span><span class="punctuation">{</span></code>
+                <code><span class="property">     background</span><span class="punctuation">:</span> red<span class="punctuation">; // Стили для планшета</span></code>
+                <code><span class="punctuation">  }</span></code>
+                <code><span class="punctuation">}</span></code>
+                <code><span class="property">@media </span>screen and (min-width: 1280px) <span class="punctuation">{</span></code>
+                <code><span class="rule">  .media-block </span><span class="punctuation">{</span></code>
+                <code><span class="property">     background</span><span class="punctuation">:</span> blue<span class="punctuation">; // Стили для десктопа</span></code>
+                <code><span class="punctuation">  }</span></code>
+                <code><span class="punctuation">}</span></code>
+
+                <a target="_blank" href="https://www.airbnb.ru/">Пример airbnb</a>
+            </pre>
+            <div>
+                <div class="media-block"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Что выбрать</h2>
+        <div class="content">
+            <mark class="item important">max-width</mark> или <mark class="item important">min-width</mark>?
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Медиа-запросы</h2>
+        <div class="content">
+            <ul>
+                <strong style="font-weight: 500">1.</strong>
+                <li>Устройства с экраном</li>
+                <li>Экран больше 300px</li>
+                <li>Экран меньше 700px</li>
+            </ul>
+            <hr>
+            <ul>
+                <strong style="font-weight: 500">2.</strong>
+                <li>Экран меньше 100px</li>
+                <li>Экран больше 1000px</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="columns two">
+            <div>
+                <p><mark class="secondary">iphone 8</mark></p>
+                <ul>
+                    <li>750 x 1334 физических пикселей</li><br>
+                    <img style="height: 300px;"  src="./pictures/iphone1.png"> 
+
+                </ul>
+            </div>
+            <div>
+                <p><mark class="secondary">Google Pixel</mark></p>
+                <ul>
+                    <li>1080 x 1920 физических пикселей</li><br>
+                    <img style="height: 300px;" src="./pictures/android.png"> 
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Пиксель - это не пиксель</h2>
+        <p><mark class="secondary">Физический пиксель</mark> (physical pixel) - ячейка на матрице</p>
+        <p><mark class="secondary">Виртуальный пиксель</mark> (device independent pixel) - независимый от устройства пиксель</p>
+        <p><mark class="secondary">Пиксельное соотношение</mark> (pixel ratio) - отношение между физическим и виртуальным пикселем</p>
+    </section>
+
+    <section class="slide">
+        <h2>Пиксель - это не пиксель</h2>
+        <div class="columns two">
+            <div>
+                <p><mark class="secondary">iphone 8</mark></p>
+                <ul>
+                    <li>375 x 667 виртуальных пикселей</li>
+                    <li>750 x 1334 физических пикселей</li>
+                    <li>Pixel ratio - 2</li>
+                </ul>
+            </div>
+            <div>
+                <p><mark class="secondary">Google Pixel</mark></p>
+                <ul>
+                    <li>412 x 732 виртуальных пикселей</li>
+                    <li>1080 x 1920 физических пикселей</li>
+                    <li>Pixel ratio - 2.625</li>
+                </ul>
+            </div>
+        </div>
+        <small>
+            <p>
+                <i>Retina - маркетинговое название для дисплеев с высокой плотностью пикселей, используемый Apple</i>
+            </p>
+        </small>
+    </section>
+
+    <section class="slide">
+        <h2>Вьюпорт</h2>
+        <p><mark class="item important">Viewport</mark> - видимая пользователю область страницы</p>
+        <img style="height:65%; margin: auto" src="./pictures/phone.png">
+    </section>
+
+
+    <section class="slide">
+        <h2>Вьюпорт</h2>
+        <p>
+            <code><span class="punctuation">&lt;</span><span class="property">meta</span> name<span class="punctuation">="</span><span class="rule">viewport</span><span class="punctuation">"</span>  content<span class="punctuation">="</span><span class="rule">initial-scale=1, ...</span><span class="punctuation">"</span><span class="punctuation">&gt;</span></code>
+        </p>
+        <small>
+            <ul>
+                <li><mark class="item secondary">initial-scale</mark> - первоначальный масштаб веб-страницы</li>
+                <li><mark class="item secondary">width</mark> - ширина вьюпорт</li>
+                <li><mark class="item secondary">height</mark> - высота вьюпорт</li>
+                <li><mark class="item secondary">user-scalable=no/yes</mark> - может ли пользователь масштабировать страницу</li>
+                <li><mark class="item secondary">minimum-scale</mark> - минимальный масштаб вьюпорт</li>
+                <li><mark class="item secondary">maximum-scale</mark> - максимальный масштаб вьюпорт</li>
+            </ul>
+        </small>
+        <p><i>По-умолчанию, css-ширина вьюпорта в мобильном браузере - 980px</i></p>
+    </section>
+
+    <section class="slide">
+        <h2>Вьюпорт</h2>
+        <p>
+            <code><span class="punctuation">&lt;</span><span class="property">meta</span> name<span class="punctuation">="</span><span class="rule">viewport</span><span class="punctuation">"</span>  content<span class="punctuation">="</span><span class="rule">width=device-width, initial-scale=1</span><span class="punctuation">"</span><span class="punctuation">&gt;</span></code>
+        </p>
+        <ul>
+            <li><mark class="item secondary">width=device-width</mark> - вьюпорт равен ширине экрана в пикселях CSS</li>
+            <li><mark class="item secondary">initial-scale=1</mark> - масштаб при первой загрузке - 100%</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <div class="content">
+            <img class="image_full_screen" src="./pictures/units.png">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Что использовать - <b>em</b>, <b>rem</b> или <b>px</b>?</h2>
+        <div class="content">
+            <img style="width: 600px" src="./pictures/units.png">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Что использовать - <b>em</b>, <b>rem</b> или <b>px</b>?</h2>
+        <div class="content">
+            <ul>
+                <li><mark class="item secondary">em</mark> - если свойства масштабируются относительно font-size компонента;</li>
+                <li><mark class="item secondary">rem</mark> - если свойства масштабируются относительно root font-size;</li>
+                <li>
+                    <mark class="item secondary">px</mark> - если нужна pixel-perfect верстка под каждый breakpoint,
+                    или если не знаете что лучше
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Картинки</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Картинки</h2>
+        <div class="content">
+            <img class="image_full_screen" src="./pictures/jpeg.png">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Растровые и векторные</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Растровые картинки</h2>
+        <div class="content">
+            <ul class="next">
+                <li>JPEG</li>
+                <li>PNG</li>
+                <li>WEBP</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Способы вставки картинки</h2>
+        <div class="content">
+            <ul class="next">
+                <li>background-image</li>
+                <li>img</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Картинки. Srcset</h2>
+        <div class="content">
+
+            <div class="media">
+                <pre>
+                    <code style="opacity: 0.4; font-size: 24px;"><span class="punctuation">&lt;</span><span class="property">img</span> src<span class="punctuation">="</span><span class="rule">image-100px.jpg</span><span class="punctuation">"</span> </span> alt<span class="punctuation">="</span><span class="rule">image</span><span class="punctuation">"</span></code>
+                    <code style="font-size: 24px;">     srcset<span class="punctuation">="</span><span class="rule">image-100px.jpg 1x,</span></code>
+                    <code style="font-size: 24px;">             </span><span class="rule">image-200px.jpg 2x<span class="punctuation">,</span></code>
+                    <code style="font-size: 24px;">             </span><span class="rule">image-400px.jpg 4x<span class="punctuation">"&gt</span></code>
+                    <pre class="small" style="position: absolute; white-space: pre; font-size: 14px;line-height: 1;top: 162px;left: 532px;">Плотность пикселей</pre>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Картинки. Sizes</h2>
+        <div class="content">
+            <div class="media">
+                <pre>
+                    <code style="opacity: 0.4; font-size: 24px;"><span class="punctuation">&lt;</span><span class="property">img</span> src<span class="punctuation">="</span><span class="rule">image-100px.jpg</span><span class="punctuation">"</span> </span> alt<span class="punctuation">="</span><span class="rule">image</span><span class="punctuation">"</span></code>
+                    <code style="opacity: 0.4; font-size: 24px;">     srcset<span class="punctuation">="</span><span class="rule">image-100px.jpg 1x,</span></code>
+                    <code style="opacity: 0.4; font-size: 24px;">             </span><span class="rule">image-200px.jpg 2x<span class="punctuation">,</span></code>
+                    <code style="opacity: 0.4; font-size: 24px;">             </span><span class="rule">image-400px.jpg 4x<span class="punctuation">"</span></code>
+                    <code style="font-size: 24px;">     sizes<span class="punctuation">="</span><span class="rule">(max-width: 1000px) 300px, 400px</span><span class="punctuation">"&gt</span></code>
+                    <pre class="small" style="margin: 0; white-space: pre; font-size: 14px;line-height: 1;">                               Медиавыражение             Размер        Фоллбек</pre>
+                    <pre class="small" style="margin: 0; white-space: pre; font-size: 14px;line-height: 1;">                                                    при этом условии            </pre>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+<!--    <section class="slide">-->
+<!--        <h2>Картинки. Media query</h2>-->
+<!--        <div class="content">-->
+<!--            <pre>-->
+<!--                <code><span class="property">@media </span>(min-resolution: 2dppx) <span class="punctuation">{</span></code>-->
+<!--                <code><span class="punctuation">    // Стили и ресурсы для экранов с высокой плотностью пикселей </span></code>-->
+<!--                <code>    background-image: url(...);</code>-->
+<!--                <code><span class="punctuation">}</span></code>-->
+<!--            </pre>-->
+
+<!--            <pre>-->
+<!--                <code><span class="property">@media </span>(min-width: 1000px) <span class="punctuation">{</span></code>-->
+<!--                <code>    <span class="punctuation">// Стили и ресурсы для широких экранов </span></code>-->
+<!--                <code>    background-image: url(...);</code>-->
+<!--                <code><span class="punctuation">}</span></code>-->
+<!--            </pre>-->
+<!--        </div>-->
+<!--    </section>-->
+
+    <section class="slide">
+        <h2>Картинки. Picture</h2>
+        <div class="content">
+            <pre>
+                <code><span class="punctuation">&lt;</span><span class="property">picture</span><span class="punctuation">&gt;</span></code>
+                <code>  <span class="punctuation">&lt;</span><span class="property">source</span> media<span class="punctuation">="</span><span class="rule">(min-width: 800px)</span><span class="punctuation">"</span></span> srcset<span class="punctuation">="</span><span class="rule">cat.jpg, cat-2x.jpg 2x</span><span class="punctuation">"&gt;</span></code>
+                <code>  <span class="punctuation">&lt;</span><span class="property">source</span> media<span class="punctuation">="</span><span class="rule">(min-width: 450px)</span><span class="punctuation">"</span></span> srcset<span class="punctuation">="</span><span class="rule">cat-s.jpg, cat-s-2x.jpg 2x</span><span class="punctuation">"&gt;</span></code>
+                <code>  <span class="punctuation">&lt;</span><span class="property">source</span> media<span class="punctuation">="</span><span class="rule">(min-width: 800px)</span><span class="punctuation">"</span></span> srcset<span class="punctuation">="</span><span class="rule">cat.webp, cat-2x.webp 2x</span><span class="punctuation">"&gt;</span></code>
+                <code>  <span class="punctuation">&lt;</span><span class="property">source</span> media<span class="punctuation">="</span><span class="rule">(min-width: 450px)</span><span class="punctuation">"</span></span> srcset<span class="punctuation">="</span><span class="rule">cat-s.webp, cat-s-2x.webp 2x</span><span class="punctuation">"&gt;</span></code>
+                <code>  <span class="punctuation">&lt;</span><span class="property">img</span> src<span class="punctuation">="</span><span class="rule">cat.jpg</span><span class="punctuation">"</span></span> srcset<span class="punctuation">="</span><span class="rule">cat-2x.jpg 2x</span><span class="punctuation">"</span> alt<span class="punctuation">="</span><span class="rule">cat</span><span class="punctuation">"&gt;</span></code>
+                <code><span class="punctuation">&lt;/</span><span class="property">picture</span><span class="punctuation">&gt;</span></code>
+            </pre>
+            <a target="_blank" href="https://googlechrome.github.io/samples/picture-element/">Пример с котиком от Google</a>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Проблемы растровых картинок</h2>
+        <div class="content">
+            <ul class="next">
+                <li>Картинки могут весить много, а интернет медленный</li>
+                <li>Маленькие картинки шакалятся на больших разрешениях</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Картинки. Svg</h2>
+        <div class="content">
+            <p><mark class="item important">Scalable Vector Graphics</mark></p>
+            <ul>
+                <li>Браузер может отрисовывать svg в любом размере</li>
+                <li>Можно менять параметры (цвет, толщину линии и тд) через css.  </li>
+                <li>Можно инлайнить в HTML</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Картинки. Svg</h2>
+        <div class="content">
+            <div class="columns two">
+                <div style="position: relative">
+                    <img src="./pictures/star.png" style="width: 111%;position: absolute;top: -20px;left: -27px;">
+                </div>
+                <div>
+                    <img src="./star.svg" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Картинки. Svg</h2>
+        <div class="content">
+            <div class="columns two">
+                <div style="position: relative">
+                    <img src="./pictures/cat.jpg" style="width: 100%;">
+                </div>
+                <div>
+                    <img src="./star.svg" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Когда загружать картинки?</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Картинки</h2>
+        <div class="content">
+            <ul>
+                <li>Браузер парсит html и css построчно</li>
+                <li>Как только встречает картинку - добавляет в очередь загрузки</li>
+                <li>Когда приходит очередь, загружает картинку</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Картинки. Инлайн</h2>
+        <div class="content">
+            <p>Важные (критичные) элементы интерфейса, которые надо сразу показать можно не грузить отдельно</p>
+            <pre>
+                <code><span class="punctuation">&lt;</span><span class="property">img</span> src<span class="punctuation">="</span><span class="rule">data:image/svg+xml;base64,[data]</span><span class="punctuation">"&gt;</span></code>
+            </pre>
+            <ul>
+                <b style="font-weight:500">Минусы base64:</b>
+                <li>Большой размер, примерно на 30% больше, чем бинарный </li>
+                <li>Раздувает HTML</li>
+            </ul>
+            <a href="https://yoksel.github.io/url-encoder/" target="_blank">Base64-encoder</a>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Картинки. Img. Ленивая загрузка</h2>
+        <div class="content">
+            <p><mark class="secondary item">Ленивая загрузка</mark> - стратегия, при которой не критические ресурсы загружаются в тот момент, когда они нужны. </p>
+            <p>Для ленивой загрузки у img есть аттрибут <mark class="item secondary">loading</mark>. Он доступен с <a target="_blank" href="https://caniuse.com/?search=loading%3D%22lazy%22">Chrome 77</a></p>
+            <p>Такая картинка загрузится, когда она окажется во вьюпорте пользователя. </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Картинки. Lazy</h2>
+        <div class="content">
+            <div class="media">
+                <pre>
+                    <code style="font-size: 24px;"><span style="opacity: 0.4; font-size: 24px;"><span class="punctuation">&lt;</span><span class="property">img</span> src<span class="punctuation">="</span><span class="rule">image-100px.jpg</span><span class="punctuation">"</span> alt<span class="punctuation">="</span><span class="rule">image</span><span class="punctuation">"</span> </span>loading<span class="punctuation">="</span><span class="rule">lazy</span><span class="punctuation">"&gt</span></code>
+                </pre>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Картинки. Inline SVG</h2>
+        <div class="content">
+
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Картинки. Svg-sprite</h2>
+        <div class="content">
+            <div class="columns two">
+                <pre>
+                    <code><span class="punctuation">// SVG-sprite</span></code>
+                    <code><span class="punctuation">&lt;</span><span class="property">svg</span> style<span class="punctuation">="</span><span class="rule">display: none;</span><span class="punctuation">"</span><span class="punctuation">&gt;</span></code>
+                    <code>  <span class="punctuation">&lt;</span><span class="property">defs</span><span class="punctuation">&gt;</span></code>
+                    <code>    <span class="punctuation">&lt;</span><span class="property">symbol</span> id<span class="punctuation">="</span><span class="rule">star</span><span class="punctuation">"</span><span class="punctuation">&gt;</span></code>
+                    <code>      <span class="punctuation">&lt;</span><span class="property">polygon</span> points<span class="punctuation">="</span><span class="rule">...</span><span class="punctuation">"</span><span class="punctuation">/&gt;</span></code>
+                    <code>    <span class="punctuation">&lt;/</span><span class="property">symbol</span><span class="punctuation">&gt;</span></code>
+                    <code>    <span class="punctuation">&lt;</span><span class="property">symbol</span> id<span class="punctuation">="</span><span class="rule">cat</span><span class="punctuation">"</span><span class="punctuation">...</span></code>
+                    <code>  <span class="punctuation">&lt;/</span><span class="property">defs</span><span class="punctuation">&gt;</span></code>
+                    <code><span class="punctuation">&lt;/</span><span class="property">svg</span><span class="punctuation">&gt;</span></code>
+                </pre>
+                <div>
+                    <pre>
+                        <code><span class="punctuation">// Непосредственное использование</span></code>
+                        <code><span class="punctuation">&lt;</span><span class="property">svg</span> class<span class="punctuation">="</span><span class="rule">icon-star</span><span class="punctuation">"</span><span class="punctuation">&gt;</span></code>
+                        <code>  <span class="punctuation">&lt;</span><span class="property">use</span> xlink:href<span class="punctuation">="</span><span class="rule">#star</span><span class="punctuation">"</span><span class="punctuation">/&gt;</span></code>
+                        <code><span class="punctuation">&lt;/</span><span class="property">svg</span><span class="punctuation">&gt;</span></code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Картинки. Svg</h2>
+        <div class="content">
+            <div class="columns two">
+                <pre>
+                    <code style="opacity: 0.4;"><span class="punctuation">// SVG-sprite</span></code>
+                    <code style="opacity: 0.4;"><span class="punctuation">&lt;</span><span class="property">svg</span> style<span class="punctuation">="</span><span class="rule">display: none;</span><span class="punctuation">"</span><span class="punctuation">&gt;</span></code>
+                    <code style="opacity: 0.4;">  <span class="punctuation">&lt;</span><span class="property">defs</span><span class="punctuation">&gt;</span></code>
+                    <code>    <span style="opacity: 0.4;" class="punctuation">&lt;</span><span style="opacity: 0.4;" class="property">symbol</span> id<span class="punctuation">="</span><span class="rule">star</span><span class="punctuation">"</span><span style="opacity: 0.4;" class="punctuation">&gt;</span></code>
+                    <code style="opacity: 0.4;">      <span class="punctuation">&lt;</span><span class="property">polygon</span> points<span class="punctuation">="</span><span class="rule">...</span><span class="punctuation">"</span><span class="punctuation">/&gt;</span></code>
+                    <code style="opacity: 0.4;">    <span class="punctuation">&lt;/</span><span class="property">symbol</span><span class="punctuation">&gt;</span></code>
+                    <code style="opacity: 0.4;">    <span class="punctuation">&lt;</span><span class="property">symbol</span> id<span class="punctuation">="</span><span class="rule">cat</span><span class="punctuation">"</span><span class="punctuation">...</span></code>
+                    <code style="opacity: 0.4;">  <span class="punctuation">&lt;/</span><span class="property">defs</span><span class="punctuation">&gt;</span></code>
+                    <code style="opacity: 0.4;"><span class="punctuation">&lt;/</span><span class="property">svg</span><span class="punctuation">&gt;</span></code>
+                </pre>
+                <div>
+                    <pre>
+                        <code style="opacity: 0.4;"><span class="punctuation">// Непосредственное использование</span></code>
+                        <code style="opacity: 0.4;"><span class="punctuation">&lt;</span><span class="property">svg</span> class<span class="punctuation">="</span><span class="rule">icon-star</span><span class="punctuation">"</span><span class="punctuation">&gt;</span></code>
+                        <code>  <span style="opacity: 0.4;" class="punctuation">&lt;</span><span style="opacity: 0.4;" class="property">use</span> xlink:href<span class="punctuation">="</span><span class="rule">#star</span><span class="punctuation">"</span><span style="opacity: 0.4;" class="punctuation">/&gt;</span></code>
+                        <code style="opacity: 0.4;"><span class="punctuation">&lt;/</span><span class="property">svg</span><span class="punctuation">&gt;</span></code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Ссылки</h2>
+        <ul>
+            <li><a href="https://css-tricks.com/snippets/css/media-queries-for-standard-devices/" target="_blank">Media Queries for Standard Devices</a></li>
+            <li><a href="https://developers.google.com/web/fundamentals/design-and-ux/responsive/images" target="_blank">Про картинки от Developers Google</a></li>
+        </ul>
+    </section>
+    <div class="progress"></div>
+
+    <script src="../shower.js"></script>
+</body>
+</html>
